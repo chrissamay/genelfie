@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Animated background */
+        body::before {
+            content: "";
+            position: fixed; /* Fixed to stay in place during scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0044cc, #ffa500, #f7f7f7, #ffa500);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background-color: rgba(0, 68, 204, 0.85);
+            color: #fff;
+            padding: 20px 0;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #ffa500;
+        }
+
+        section {
+            padding: 40px 20px;
+            margin: 20px 0;
+            width: 80%;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeInUp 1s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        #home h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #0044cc;
+            animation: slideInFromLeft 1s ease-in-out;
+        }
+
+        #home img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: bounce 2s infinite;
+        }
+
+        #about h2, #contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #0044cc;
+            animation: slideInFromRight 1s ease-in-out;
+        }
+
+        #about img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: grayscale(100%);
+        }
+
+        #about img:hover {
+            transform: scale(1.05);
+            filter: grayscale(0);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0044cc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            background-color: #ffa500;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 68, 204, 0.85);
+            color: #fff;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                width: 95%;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            #about img {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1>Welcome to My Portfolio</h1>
+        <img src="piya.jpeg" alt="Genelfie Guillena Bitacura">
+        <p>"Hello! I'm Genelfie Guillena Bitacura, a passionate and innovative web developer with a relentless drive to create exceptional digital experiences. With a keen eye for design and a mastery of cutting-edge technologies, I specialize in crafting robust, user-centric websites and web applications that not only meet but exceed client expectations.
+My journey in web development began with a fascination for the power of code to transform ideas into interactive realities. Over the years, I've honed my skills across various programming languages, frameworks, and development methodologies, always staying at the forefront of industry trends and best practices.
+From responsive front-end designs that captivate users to scalable back-end architectures that ensure seamless functionality, I take pride in delivering comprehensive solutions that address the unique challenges of each project. My expertise spans HTML5, CSS3, JavaScript, and popular frameworks like React and Angular, as well as server-side technologies such as Node.js and PHP.
+What sets me apart is not just my technical proficiency, but my unwavering commitment to understanding and fulfilling the vision of my clients and end-users alike. I believe that truly exceptional web development goes beyond mere code – it's about creating intuitive, accessible, and engaging digital spaces that leave a lasting impact.
+Whether it's optimizing website performance, implementing robust security measures, or integrating complex APIs, I approach each task with meticulous attention to detail and a passion for problem-solving. My goal is always to deliver polished, future-proof solutions that stand the test of time and technological evolution.
+I thrive in collaborative environments and have a track record of successful projects across various industries, from e-commerce platforms to content management systems and beyond. With every line of code I write, I'm dedicated to pushing the boundaries of what's possible in web development and contributing to the ever-evolving digital landscape.</p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <img src="piyang.jpeg" alt="About Image">
+		<p>"Hi my name is Genelfie Guillena Bitacura, 22 years of age and I live in Abong-Abong, Tabina, Zamboanga del sur. A current 4th year college student at Zamboanga Del Sur Provincial Government College taking the course of Bachelor of Science in Information Systems. An eldest daughter of Mr. Flaviano Dinopol Bitacura and Mrs. Gina Guillena Bitacura and I have two siblings who are Genevieve and Genelove.</p>
+		</section>
+
+       
+<section id="contact">
+    <h2>Contact</h2>
+    <p>You can reach me at:</p>
+    <ul>
+        <li>Email: <a href="mailto: bitacuragenelfie@gmail.com">bitacuragenelfie@gmail.com</a></li>
+        <li>Facebook: <a href="https://www.facebook.com/Genelfie%20Guillena%20Bitacura" target="_blank">Genelfie Guillena Bitacura</a></li>
+    </ul>
+</section>
